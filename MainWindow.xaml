@@ -236,6 +236,11 @@
                                 <TextBlock x:Name="SocialMediaTitle" Text="Social Media" FontWeight="Bold" 
                                           Foreground="#FFD9FF" Margin="0,0,0,8"/>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,15">
+                                    <Button x:Name="DiscordButton" Margin="5" Width="50" Height="50" 
+                                           Style="{StaticResource SocialButton}" Click="Discord_Click"
+                                           ToolTip="Únete a nuestro Discord">
+                                        <Image Source="pack://application:,,,/discord.png" Stretch="Uniform"/>
+                                    </Button>
                                     <Button x:Name="TikTokButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="TikTok_Click"
                                            ToolTip="Síguenos en TikTok">
@@ -262,6 +267,7 @@
                                     <StackPanel>
                                         <TextBlock Text="• Windows 10/11 (64-bit)" Foreground="#D3B4FF" FontSize="11" Margin="0,2"/>
                                         <TextBlock Text="• .NET 8.0 Runtime" Foreground="#D3B4FF" FontSize="11" Margin="0,2"/>
+                                        <TextBlock Text="• VC++ Redist x86 &amp; x64" Foreground="#D3B4FF" FontSize="11" Margin="0,2"/>
                                         <TextBlock Text="• GTA V installed" Foreground="#D3B4FF" FontSize="11" Margin="0,2"/>
                                         <TextBlock Text="• Administrator rights" Foreground="#D3B4FF" FontSize="11" Margin="0,2"/>
                                     </StackPanel>

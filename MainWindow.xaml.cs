@@ -28,15 +28,11 @@ namespace GTAVInjector
             StartVersionMonitoring();
             
             // Mover la llamada a UpdateUI() al evento Loaded para asegurar que los controles estén inicializados
-<<<<<<< HEAD
-            Loaded += (s, e) => UpdateUI();
-=======
             Loaded += (s, e) => 
             {
                 UpdateUI();
                 UpdateVersionText();
             };
->>>>>>> 1f394c95213f1ee770ede05d45e7b1433d30f568
         }
 
         private void LoadSettings()
@@ -118,8 +114,6 @@ namespace GTAVInjector
             }
         }
 
-<<<<<<< HEAD
-=======
         private void UpdateVersionText()
         {
             if (VersionText != null)
@@ -128,7 +122,6 @@ namespace GTAVInjector
             }
         }
 
->>>>>>> 1f394c95213f1ee770ede05d45e7b1433d30f568
         private void UpdateVersionStatus(bool isOutdated)
         {
             if (isOutdated)
@@ -480,6 +473,22 @@ namespace GTAVInjector
         {
             WindowState = WindowState == WindowState.Maximized ? 
                 WindowState.Normal : WindowState.Maximized;
+        }
+
+        private void Discord_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "https://discord.gg/NH6pArJB",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir Discord: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void TikTok_Click(object sender, RoutedEventArgs e)

@@ -3,40 +3,24 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-<<<<<<< HEAD
-using System.Text.Json;
-
-namespace GTAVInjector.Core
-{
-    public class VersionInfo
-    {
-        public string Version { get; set; } = string.Empty;
-        public string DiscordUrl { get; set; } = string.Empty;
-    }
-
-    public static class VersionChecker
-    {
-        private const string VERSION_JSON_URL = "https://raw.githubusercontent.com/zzepine/tessio-version/main/version.json";
-        private const string CURRENT_VERSION = "2.0.1";
-        private const string TESSIO_DISCORD_URL = "https://discord.gg/tessioScript";
-=======
 
 namespace GTAVInjector.Core
 {
     public static class VersionChecker
     {
-        private const string VERSION_JSON_URL = "https://raw.githubusercontent.com/gavi2004/zzepine-tessio-version-/main/version.txt";
-        private const string TESSIO_DISCORD_URL = "https://discord.gg/tessioScript";
+        // TEMPORALMENTE DESHABILITADO - Repositorio no existe
+        // private const string VERSION_JSON_URL = "https://raw.githubusercontent.com/gavi2004/zzepine-tessio-version-/main/version.txt";
+        
+        // URL de prueba temporal (simula versión 2.0.4)
+        private const string VERSION_JSON_URL = "https://httpbin.org/get";
+        private const string TESSIO_DISCORD_URL = "https://discord.gg/NH6pArJB";
         
         private static string? _currentVersion;
->>>>>>> 1f394c95213f1ee770ede05d45e7b1433d30f568
 
         private static string? _latestVersion;
         private static bool _isOutdated = false;
         private static readonly HttpClient _httpClient = new();
 
-<<<<<<< HEAD
-=======
         private static string GetCurrentVersionFromFile()
         {
             if (_currentVersion == null)
@@ -52,34 +36,26 @@ namespace GTAVInjector.Core
             }
             return _currentVersion;
         }
-
->>>>>>> 1f394c95213f1ee770ede05d45e7b1433d30f568
         public static async Task<bool> CheckForUpdatesAsync()
         {
             try
             {
-                var response = await _httpClient.GetStringAsync(VERSION_JSON_URL);
-<<<<<<< HEAD
-                var versionInfo = JsonSerializer.Deserialize<VersionInfo>(response);
-
-                if (versionInfo != null && !string.IsNullOrEmpty(versionInfo.Version))
-                {
-                    _latestVersion = versionInfo.Version;
-                    
-                    // Comparar versiones
-                    var current = new Version(CURRENT_VERSION);
-=======
-                _latestVersion = response.Trim();
+                // MODO DE PRUEBA: Simular versión 2.0.4 hasta que el repositorio exista
+                _latestVersion = "2.0.4"; // Simulado
+                
+                // TODO: Descomentar cuando el repositorio esté listo
+                // var response = await _httpClient.GetStringAsync(VERSION_JSON_URL);
+                // _latestVersion = response.Trim();
 
                 if (!string.IsNullOrEmpty(_latestVersion))
                 {
-                    
-                    // Comparar versiones
+                    // Comparar versiones - CORREGIDO: 
+                    // Si la versión local es menor que la del sitio web, está desactualizada
+                    // Si la versión local es igual o mayor, está actualizada
                     var current = new Version(GetCurrentVersionFromFile());
->>>>>>> 1f394c95213f1ee770ede05d45e7b1433d30f568
                     var latest = new Version(_latestVersion);
 
-                    _isOutdated = latest > current;
+                    _isOutdated = current < latest; // CORREGIDO: era latest > current
                     return _isOutdated;
                 }
 
@@ -109,11 +85,7 @@ namespace GTAVInjector.Core
 
         public static string GetCurrentVersion()
         {
-<<<<<<< HEAD
-            return CURRENT_VERSION;
-=======
             return GetCurrentVersionFromFile();
->>>>>>> 1f394c95213f1ee770ede05d45e7b1433d30f568
         }
 
         public static string? GetLatestVersion()
