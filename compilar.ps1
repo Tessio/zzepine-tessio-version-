@@ -68,7 +68,7 @@ if ($response -eq "S" -or $response -eq "s") {
     
     if ($LASTEXITCODE -eq 0) {
         Write-Host "OK Ejecutable portable creado" -ForegroundColor Green
-        $portablePath = "bin\Release\net8.0-windows\win-x64\publish\GTAV-Injector.exe"
+        $portablePath = "bin\Release\net8.0-windows\win-x64\publish\GTA GG'S Launcher.exe"
         Write-Host "Ubicacion: $portablePath" -ForegroundColor Cyan
     }
 }
@@ -79,7 +79,7 @@ Write-Host "              OK COMPILACION COMPLETADA                       " -For
 Write-Host "==============================================================" -ForegroundColor Green
 Write-Host ""
 
-$exePath = "bin\Release\net8.0-windows\GTAV-Injector.exe"
+$exePath = "bin\Release\net8.0-windows\GTA GGS Launcher.exe"
 Write-Host "Ejecutable generado en:" -ForegroundColor Cyan
 Write-Host "   $exePath" -ForegroundColor White
 Write-Host ""

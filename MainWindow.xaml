@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="GTAV Injector Enhanced" 
+        Title="GTA GG'S Launcher" 
         Height="700" Width="1000"
         MinHeight="600" MinWidth="800"
         WindowStartupLocation="CenterScreen"
@@ -30,7 +30,7 @@
             <BeginStoryboard Storyboard="{StaticResource ParallaxAnimation}"/>
         </EventTrigger>
     </Window.Triggers>
-    
+
     <Border BorderBrush="{StaticResource PrimaryColor}" BorderThickness="2" CornerRadius="12">
         <Grid>
             <!-- Fondo animado con parallax -->
@@ -69,7 +69,7 @@
                 <!-- Barra de título personalizada -->
                 <Border Grid.Row="0" Background="#1A0128" CornerRadius="10,10,0,0" Margin="0">
                     <Grid MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
-                    <Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
@@ -78,9 +78,9 @@
                     <!-- Logo y título -->
                     <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="15,0">
                         <Image x:Name="LogoImage" Width="40" Height="40" Margin="0,0,10,0" 
-                               Source="/Resources/logo.png" VerticalAlignment="Center"/>
+                               Source="pack://application:,,,/Resources/logo tessio.png" VerticalAlignment="Center"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="GTAV INJECTOR" FontSize="18" FontWeight="Bold" Foreground="#FF9EFF"/>
+                            <TextBlock Text="TessioScript Inyector" FontSize="18" FontWeight="Bold" Foreground="#FF9EFF"/>
                             <TextBlock x:Name="VersionText" Text="v2.0.0" FontSize="10" Foreground="#D3B4FF"/>
                         </StackPanel>
                     </StackPanel>
@@ -99,10 +99,10 @@
                         <Button Content="─" Style="{StaticResource WindowButton}" Click="Minimize_Click"/>
                         <Button Content="✕" Style="{StaticResource CloseButton}" Click="Close_Click"/>
                     </StackPanel>
-                    </Grid>
-                </Border>
-                
-                <!-- Contenido principal -->
+                </Grid>
+            </Border>
+
+    <!-- Contenido principal -->
                 <Grid Grid.Row="1" Margin="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
@@ -132,12 +132,12 @@
                             <CheckBox x:Name="AutoInjectCheckbox" Grid.Row="1" Margin="0,0,0,10"
                                      Content="Auto-Inject on game start" Foreground="#FFFFFF"
                                      Checked="AutoInject_Changed" Unchecked="AutoInject_Changed"/>
-                            
+
                             <!-- Lista de DLLs con ScrollViewer -->
                             <ScrollViewer Grid.Row="2" Margin="0,0,0,10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                                 <ListView x:Name="DllListView" Background="#15011E" 
                                          BorderThickness="0">
-                                <ListView.ItemTemplate>
+                                    <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Margin="5">
                                             <Grid.ColumnDefinitions>
@@ -172,7 +172,7 @@
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                </ListView>
+                            </ListView>
                             </ScrollViewer>
                             
                             <!-- Botones de acción -->
@@ -232,9 +232,9 @@
                                 <RadioButton x:Name="SteamRadio" Content="Steam" 
                                             Foreground="#FFFFFF" Margin="0,5" GroupName="Launcher" 
                                             Checked="Launcher_Changed"/>
-                                
+
                                 <Separator Margin="0,15" Background="#A946FF"/>
-                                
+
                                 <!-- Redes Sociales -->
                                 <TextBlock x:Name="SocialMediaTitle" Text="Social Media" FontWeight="Bold" 
                                           Foreground="#FFD9FF" Margin="0,0,0,8"/>
@@ -242,27 +242,27 @@
                                     <Button x:Name="DiscordButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="Discord_Click"
                                            ToolTip="Únete a nuestro Discord">
-                                        <Image Source="pack://application:,,,/discord.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/discord.png" Stretch="Uniform"/>
                                     </Button>
                                     <Button x:Name="TikTokButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="TikTok_Click"
                                            ToolTip="Síguenos en TikTok">
-                                        <Image Source="pack://application:,,,/tiktok.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/tiktok.png" Stretch="Uniform"/>
                                     </Button>
                                     <Button x:Name="TwitchButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="Twitch_Click"
                                            ToolTip="Síguenos en Twitch">
-                                        <Image Source="pack://application:,,,/twitch.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/twitch.png" Stretch="Uniform"/>
                                     </Button>
                                     <Button x:Name="YouTubeButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="YouTube_Click"
                                            ToolTip="Síguenos en YouTube">
-                                        <Image Source="pack://application:,,,/youtube.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/youtube.png" Stretch="Uniform"/>
                                     </Button>
                                 </StackPanel>
-                                
+
                                 <Separator Margin="0,0,0,15" Background="#A946FF"/>
-                                
+
                                 <!-- Requisitos -->
                                 <TextBlock x:Name="RequirementsTitle" Text="Requirements" FontWeight="Bold" 
                                           Foreground="#FFD9FF" Margin="0,0,0,5"/>
@@ -280,7 +280,7 @@
                             <!-- Imagen destacada -->
                             <Border Grid.Row="1" Background="#15011E" CornerRadius="10" Padding="10" Margin="0,12,0,0">
                                 <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
-                                    <Image Source="pack://application:,,,/logo.png" Height="200" Width="200" Stretch="Uniform"
+                                    <Image Source="pack://application:,,,/Resources/logo tessio.png" Height="200" Width="200" Stretch="Uniform"
                                            RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
                                 </Viewbox>
                             </Border>

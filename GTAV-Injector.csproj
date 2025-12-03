@@ -8,17 +8,17 @@
     <DisableXbfGeneration>false</DisableXbfGeneration>
     <DisableXbfLineInfo>false</DisableXbfLineInfo>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-    <ApplicationIcon>tessiox.ico</ApplicationIcon>
-    <AssemblyName>GTAV-Injector</AssemblyName>
+    <ApplicationIcon>Resources\icon tessio.ico</ApplicationIcon>
+    <AssemblyName>GTA GGS Launcher</AssemblyName>
     <RootNamespace>GTAVInjector</RootNamespace>
     <Version>2.0.3</Version>
-    <Authors>Reisita</Authors>
+    <Authors>Reisita and Tessio</Authors>
     <Company>GGS Team</Company>
     <Product>GTAV Injector Enhanced</Product>
     <Description>Advanced GTA V DLL Injector with auto-injection and version control</Description>
-    <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>false</SelfContained>
-    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	<PublishSingleFile>true</PublishSingleFile>
+	<SelfContained>false</SelfContained>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,13 +35,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="discord.png" />
-    <Resource Include="logo.png" />
-    <Resource Include="tiktok.png" />
-    <Resource Include="twitch.png" />
-    <Resource Include="youtube.png" />
-  </ItemGroup>
-
 </Project>

@@ -9,7 +9,7 @@ namespace GTAVInjector.Core
     {
         private static readonly string SettingsPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "GTAV-Injector",
+            "GTA GGS Launcher",
             "settings.json"
         );
 
