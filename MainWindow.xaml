@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="GTAV Injector Enhanced" 
+        Title="GTA GG'S Launcher" 
         Height="700" Width="1000"
         MinHeight="600" MinWidth="800"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanResize">
     
     <Window.Resources>
         <!-- Animación de parallax -->
@@ -31,7 +31,7 @@
         </EventTrigger>
     </Window.Triggers>
     
-    <Border BorderBrush="{StaticResource PrimaryColor}" BorderThickness="2" CornerRadius="12">
+    <Border BorderBrush="{StaticResource PrimaryColor}" BorderThickness="1.5" CornerRadius="12">
         <Grid>
             <!-- Fondo animado con parallax -->
             <Canvas ClipToBounds="True">
@@ -67,8 +67,7 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Barra de título personalizada -->
-                <Border Grid.Row="0" Background="#1A0128" CornerRadius="10,10,0,0" Margin="0">
-                    <Grid MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid Grid.Row="0" Background="#1A0128" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -78,9 +77,9 @@
                     <!-- Logo y título -->
                     <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="15,0">
                         <Image x:Name="LogoImage" Width="40" Height="40" Margin="0,0,10,0" 
-                               Source="/Resources/logo.png" VerticalAlignment="Center"/>
+                               Source="pack://application:,,,/Resources/logo tessio.png" VerticalAlignment="Center"/>
                         <StackPanel VerticalAlignment="Center">
-                            <TextBlock Text="GTAV INJECTOR" FontSize="18" FontWeight="Bold" Foreground="#FF9EFF"/>
+                            <TextBlock Text="TessioScript Inyector" FontSize="18" FontWeight="Bold" Foreground="#FF9EFF"/>
                             <TextBlock x:Name="VersionText" Text="v2.0.0" FontSize="10" Foreground="#D3B4FF"/>
                         </StackPanel>
                     </StackPanel>
@@ -97,10 +96,10 @@
                     <!-- Botones de ventana -->
                     <StackPanel Grid.Column="2" Orientation="Horizontal">
                         <Button Content="─" Style="{StaticResource WindowButton}" Click="Minimize_Click"/>
+                        <Button Content="☐" Style="{StaticResource WindowButton}" Click="Maximize_Click"/>
                         <Button Content="✕" Style="{StaticResource CloseButton}" Click="Close_Click"/>
                     </StackPanel>
-                    </Grid>
-                </Border>
+                </Grid>
                 
                 <!-- Contenido principal -->
                 <Grid Grid.Row="1" Margin="20">
@@ -133,10 +132,9 @@
                                      Content="Auto-Inject on game start" Foreground="#FFFFFF"
                                      Checked="AutoInject_Changed" Unchecked="AutoInject_Changed"/>
                             
-                            <!-- Lista de DLLs con ScrollViewer -->
-                            <ScrollViewer Grid.Row="2" Margin="0,0,0,10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                                <ListView x:Name="DllListView" Background="#15011E" 
-                                         BorderThickness="0">
+                            <!-- Lista de DLLs -->
+                            <ListView x:Name="DllListView" Grid.Row="2" Background="#15011E" 
+                                     BorderThickness="0" Margin="0,0,0,10">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Margin="5">
@@ -172,8 +170,7 @@
                                         </Grid>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
-                                </ListView>
-                            </ScrollViewer>
+                            </ListView>
                             
                             <!-- Botones de acción -->
                             <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -233,7 +230,7 @@
                                             Foreground="#FFFFFF" Margin="0,5" GroupName="Launcher" 
                                             Checked="Launcher_Changed"/>
                                 
-                                <Separator Margin="0,15" Background="#A946FF"/>
+                                <Separator Margin="0,15" Background="#444"/>
                                 
                                 <!-- Redes Sociales -->
                                 <TextBlock x:Name="SocialMediaTitle" Text="Social Media" FontWeight="Bold" 
@@ -242,26 +239,26 @@
                                     <Button x:Name="DiscordButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="Discord_Click"
                                            ToolTip="Únete a nuestro Discord">
-                                        <Image Source="pack://application:,,,/discord.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/discord.png" Stretch="Uniform"/>
                                     </Button>
                                     <Button x:Name="TikTokButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="TikTok_Click"
                                            ToolTip="Síguenos en TikTok">
-                                        <Image Source="pack://application:,,,/tiktok.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/tiktok.png" Stretch="Uniform"/>
                                     </Button>
                                     <Button x:Name="TwitchButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="Twitch_Click"
                                            ToolTip="Síguenos en Twitch">
-                                        <Image Source="pack://application:,,,/twitch.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/twitch.png" Stretch="Uniform"/>
                                     </Button>
                                     <Button x:Name="YouTubeButton" Margin="5" Width="50" Height="50" 
                                            Style="{StaticResource SocialButton}" Click="YouTube_Click"
                                            ToolTip="Síguenos en YouTube">
-                                        <Image Source="pack://application:,,,/youtube.png" Stretch="Uniform"/>
+                                        <Image Source="pack://application:,,,/Resources/social/youtube.png" Stretch="Uniform"/>
                                     </Button>
                                 </StackPanel>
                                 
-                                <Separator Margin="0,0,0,15" Background="#A946FF"/>
+                                <Separator Margin="0,0,0,15" Background="#444"/>
                                 
                                 <!-- Requisitos -->
                                 <TextBlock x:Name="RequirementsTitle" Text="Requirements" FontWeight="Bold" 
@@ -280,7 +277,7 @@
                             <!-- Imagen destacada -->
                             <Border Grid.Row="1" Background="#15011E" CornerRadius="10" Padding="10" Margin="0,12,0,0">
                                 <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
-                                    <Image Source="pack://application:,,,/logo.png" Height="200" Width="200" Stretch="Uniform"
+                                    <Image Source="pack://application:,,,/Resources/logo tessio.png" Height="200" Width="200" Stretch="Uniform"
                                            RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
                                 </Viewbox>
                             </Border>
@@ -289,7 +286,7 @@
                 </Grid>
                 
                 <!-- Barra de estado -->
-                <Border Grid.Row="2" Background="#15011E" CornerRadius="0,0,10,10" Padding="12,6" Margin="0">
+                <Border Grid.Row="2" Background="#15011E" CornerRadius="8" Padding="12,6">
                     <Grid>
                         <TextBlock x:Name="StatusText" Text="Ready" Foreground="#FF9EFF" 
                                   VerticalAlignment="Center"/>

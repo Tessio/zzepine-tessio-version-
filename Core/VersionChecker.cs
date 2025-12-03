@@ -8,9 +8,12 @@ namespace GTAVInjector.Core
 {
     public static class VersionChecker
     {
-        // URL del repositorio de GitHub para verificación de versiones
-        private const string VERSION_JSON_URL = "https://raw.githubusercontent.com/gavi2004/zzepine-tessio-version-/main/version.txt";
-        private const string TESSIO_DISCORD_URL = "https://discord.gg/NH6pArJB";
+        // TEMPORALMENTE DESHABILITADO - Repositorio no existe
+        // private const string VERSION_JSON_URL = "https://github.com/Tessio/Translations/blob/master/version_l.txt";
+        
+        // URL de prueba temporal (simula versión 2.0.4)
+        private const string VERSION_JSON_URL = "https://httpbin.org/get";
+        private const string TESSIO_DISCORD_URL = "https://gtaggs.wirdland.xyz/discord";
         
         private static string? _currentVersion;
 
@@ -37,9 +40,12 @@ namespace GTAVInjector.Core
         {
             try
             {
-                // Obtener la versión desde el repositorio de GitHub
-                var response = await _httpClient.GetStringAsync(VERSION_JSON_URL);
-                _latestVersion = response.Trim();
+                // MODO DE PRUEBA: Simular versión 2.0.4 hasta que el repositorio exista
+                _latestVersion = "2.0.4"; // Simulado
+                
+                // TODO: Descomentar cuando el repositorio esté listo
+                // var response = await _httpClient.GetStringAsync(VERSION_JSON_URL);
+                // _latestVersion = response.Trim();
 
                 if (!string.IsNullOrEmpty(_latestVersion))
                 {

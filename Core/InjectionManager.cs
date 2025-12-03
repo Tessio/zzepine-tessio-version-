@@ -192,7 +192,7 @@ namespace GTAVInjector.Core
                 // Crear copia temporal de la DLL
                 var tempPath = Path.Combine(
                     Path.GetTempPath(),
-                    "GTAV-Injector",
+                    "GTA GGS Launcher",
                     Path.GetFileName(dllPath)
                 );
 

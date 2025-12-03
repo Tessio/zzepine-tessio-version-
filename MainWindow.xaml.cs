@@ -453,8 +453,15 @@ namespace GTAVInjector
 
         private void TitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Solo permitir arrastrar la ventana, no maximizar
-            DragMove();
+            if (e.ClickCount == 2)
+            {
+                WindowState = WindowState == WindowState.Maximized ? 
+                    WindowState.Normal : WindowState.Maximized;
+            }
+            else
+            {
+                DragMove();
+            }
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
@@ -462,7 +469,11 @@ namespace GTAVInjector
             WindowState = WindowState.Minimized;
         }
 
-        // Función de maximizar removida - ya no es necesaria
+        private void Maximize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Maximized ? 
+                WindowState.Normal : WindowState.Maximized;
+        }
 
         private void Discord_Click(object sender, RoutedEventArgs e)
         {
