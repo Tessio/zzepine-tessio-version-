@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace GTAVInjector.Core
@@ -12,19 +13,30 @@ namespace GTAVInjector.Core
         private const string VERSION_JSON_URL = "https://raw.githubusercontent.com/Tessio/Translations/master/version_l.txt";
         private const string TESSIO_DISCORD_URL = "https://gtaggs.wirdland.xyz/discord";
         
+        // NOTA: La versión actual ahora se obtiene directamente del Assembly (definida en el .csproj)
+        // Ya no dependemos del archivo version.txt - La versión se define en una sola ubicación
+        
         private static string? _currentVersion;
 
         private static string? _latestVersion;
         private static bool _isOutdated = false;
         private static readonly HttpClient _httpClient = new();
 
-        private static string GetCurrentVersionFromFile()
+        private static string GetCurrentVersionFromAssembly()
         {
             if (_currentVersion == null)
             {
                 try
                 {
-                    _currentVersion = File.ReadAllText("version.txt").Trim();
+                    // Obtener la versión del assembly actual
+                    _currentVersion = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "2.0.0";
+                    
+                    // Si la versión tiene 4 partes (ej: 2.0.3.0), usar solo las primeras 3
+                    var versionParts = _currentVersion.Split('.');
+                    if (versionParts.Length >= 3)
+                    {
+                        _currentVersion = $"{versionParts[0]}.{versionParts[1]}.{versionParts[2]}";
+                    }
                 }
                 catch
                 {
@@ -46,7 +58,7 @@ namespace GTAVInjector.Core
                     // Comparar versiones - CORREGIDO: 
                     // Si la versión local es menor que la del sitio web, está desactualizada
                     // Si la versión local es igual o mayor, está actualizada
-                    var current = new Version(GetCurrentVersionFromFile());
+                    var current = new Version(GetCurrentVersionFromAssembly());
                     var latest = new Version(_latestVersion);
 
                     _isOutdated = current < latest; // CORREGIDO: era latest > current
@@ -79,7 +91,7 @@ namespace GTAVInjector.Core
 
         public static string GetCurrentVersion()
         {
-            return GetCurrentVersionFromFile();
+            return GetCurrentVersionFromAssembly();
         }
 
         public static string? GetLatestVersion()

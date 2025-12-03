@@ -32,9 +32,4 @@
     <Resource Include="Resources\**\*" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="version.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
