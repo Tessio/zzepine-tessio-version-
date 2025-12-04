@@ -224,6 +224,19 @@ namespace GTAVInjector
                 if (RequirementsTitle != null) RequirementsTitle.Text = LocalizationManager.GetString("Requirements");
                 if (VersionStatusTitle != null) VersionStatusTitle.Text = LocalizationManager.GetString("VersionStatus");
                 if (UpdateButton != null) UpdateButton.Content = LocalizationManager.GetString("UpdateAvailable");
+                
+                // Actualizar StatusText según idioma
+                var currentLang = SettingsManager.Settings.Language;
+                if (currentLang == "es")
+                {
+                    if (StatusText != null && (StatusText.Text == "Ready" || StatusText.Text == "Listo"))
+                        StatusText.Text = "Listo";
+                }
+                else
+                {
+                    if (StatusText != null && (StatusText.Text == "Listo" || StatusText.Text == "Ready"))
+                        StatusText.Text = "Ready";
+                }
             }
             catch (Exception ex)
             {
@@ -427,6 +440,18 @@ namespace GTAVInjector
                 SettingsManager.Settings.Language = lang;
                 SettingsManager.SaveSettings();
                 UpdateUI();
+                
+                // Actualizar texto de StatusText según idioma
+                if (lang == "es")
+                {
+                    if (StatusText.Text == "Ready" || StatusText.Text == "Listo")
+                        StatusText.Text = "Listo";
+                }
+                else
+                {
+                    if (StatusText.Text == "Listo" || StatusText.Text == "Ready")
+                        StatusText.Text = "Ready";
+                }
             }
         }
 

@@ -31,7 +31,7 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Border BorderBrush="{StaticResource PrimaryColor}" BorderThickness="2" CornerRadius="12">
+    <Border BorderBrush="#FF9EFF" BorderThickness="2" CornerRadius="12">
         <Grid MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
             <!-- Fondo animado con parallax -->
             <Canvas ClipToBounds="True">
@@ -311,7 +311,7 @@
                                                     </Style>
                                                 </TextBlock.Style>
                                             </TextBlock>
-                                            <Button Grid.Column="3" Content="Remove" 
+                                            <Button Grid.Column="3" x:Name="RemoveButton" Content="Remover" 
                                                    Style="{StaticResource DangerButton}"
                                                    Click="RemoveDll_Click" Tag="{Binding}"/>
                                         </Grid>
@@ -432,7 +432,7 @@
                 <!-- Barra de estado -->
                 <Border Grid.Row="2" Background="#15011E" CornerRadius="0,0,12,12" Padding="12,6" Margin="0">
                     <Grid>
-                        <TextBlock x:Name="StatusText" Text="Ready" Foreground="#FF9EFF" 
+                        <TextBlock x:Name="StatusText" Text="Listo" Foreground="#FF9EFF" 
                                   VerticalAlignment="Center"/>
                         <TextBlock x:Name="GameStatusText" Text="Game: Not Running" 
                                   Foreground="#FF4FD8" HorizontalAlignment="Right" 
