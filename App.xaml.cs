@@ -28,6 +28,9 @@ namespace GTAVInjector
 
         protected override void OnExit(ExitEventArgs e)
         {
+            // Detener el monitoreo de versiones al salir
+            Core.VersionChecker.StopVersionMonitoring();
+            
             // No forzar guardado al salir - solo si hay cambios pendientes
             // Los cambios ya se guardan automáticamente cuando el usuario los hace
             base.OnExit(e);
@@ -41,11 +44,20 @@ namespace GTAVInjector
                 await Core.VersionChecker.CheckForUpdatesAsync();
                 
                 // Iniciar monitoreo continuo (cada 10 segundos)
-                await Core.VersionChecker.StartVersionMonitoring((isOutdated) =>
+                Core.VersionChecker.StartVersionMonitoring((isOutdated) =>
                 {
                     // Callback cuando cambia el estado de la versión
                     System.Diagnostics.Debug.WriteLine($"📱 Estado de versión actualizado - Desactualizada: {isOutdated}");
+                    
+                    // Aquí puedes agregar lógica para notificar a la UI si es necesario
+                    Application.Current.Dispatcher.BeginInvoke(() =>
+                    {
+                        // Actualizar UI si es necesario
+                        System.Diagnostics.Debug.WriteLine($"🔄 UI notificada del cambio de versión");
+                    });
                 });
+                
+                System.Diagnostics.Debug.WriteLine("✅ VersionChecker inicializado correctamente");
             }
             catch (System.Exception ex)
             {

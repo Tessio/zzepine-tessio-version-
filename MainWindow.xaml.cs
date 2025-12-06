@@ -187,9 +187,9 @@ namespace GTAVInjector
             }
         }
 
-        private async void StartVersionMonitoring()
+        private void StartVersionMonitoring()
         {
-            await VersionChecker.StartVersionMonitoring(isOutdated =>
+            VersionChecker.StartVersionMonitoring(isOutdated =>
             {
                 Dispatcher.Invoke(() => UpdateVersionStatus(isOutdated));
             });

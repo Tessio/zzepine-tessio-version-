@@ -16,11 +16,10 @@ namespace GTAVInjector.Core
         // NOTA: La versión actual ahora se obtiene directamente del Assembly (definida en el .csproj)
         // Ya no dependemos del archivo version.txt - La versión se define en una sola ubicación
         
-        private static string? _currentVersion;
-
         private static string? _latestVersion;
         private static bool _isOutdated = false;
         private static readonly HttpClient _httpClient = new();
+        private static System.Threading.Timer? _versionTimer;
 
         // VERSIÓN FIJA DESDE CSPROJ - NO USAR ASSEMBLY
         private static string GetCurrentVersionFromProject()
@@ -96,25 +95,46 @@ namespace GTAVInjector.Core
         }
 
         // Timer para verificar constantemente las actualizaciones
-        public static async Task StartVersionMonitoring(Action<bool> onVersionChanged)
+        public static void StartVersionMonitoring(Action<bool> onVersionChanged)
         {
-            var timer = new System.Threading.Timer(async _ =>
+            // Detener timer anterior si existe
+            _versionTimer?.Dispose();
+            
+            _versionTimer = new System.Threading.Timer(async _ =>
             {
                 try
                 {
                     bool wasOutdated = _isOutdated;
                     await CheckForUpdatesAsync();
                     
+                    var timestamp = DateTime.Now.ToString("HH:mm:ss");
+                    System.Diagnostics.Debug.WriteLine($"⏱️ [{timestamp}] Timer ejecutado - Estado anterior: {wasOutdated}, Estado actual: {_isOutdated}");
+                    
+                    // También escribir a un archivo log temporal para verificación
+                    try 
+                    {
+                        System.IO.File.AppendAllText("tmp_rovodev_version_log.txt", 
+                            $"[{timestamp}] VersionChecker ejecutado - Versión actual: {GetCurrentVersionFromProject()}, Versión remota: {_latestVersion}, Desactualizada: {_isOutdated}\n");
+                    }
+                    catch { /* Ignorar errores de escritura */ }
+                    
                     if (wasOutdated != _isOutdated)
                     {
                         onVersionChanged?.Invoke(_isOutdated);
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
-                    // Ignorar errores de red silenciosamente
+                    System.Diagnostics.Debug.WriteLine($"❌ Error en timer: {ex.Message}");
                 }
             }, null, TimeSpan.Zero, TimeSpan.FromSeconds(10)); // Verificar cada 10 segundos
+        }
+        
+        // Método para detener el monitoreo
+        public static void StopVersionMonitoring()
+        {
+            _versionTimer?.Dispose();
+            _versionTimer = null;
         }
     }
 }
