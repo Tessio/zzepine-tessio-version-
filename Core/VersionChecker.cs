@@ -13,6 +13,22 @@ namespace GTAVInjector.Core
 
         public static void OpenDiscordUpdate()
         {
+            // Prevenir múltiples verificaciones simultáneas
+            if (_isChecking && !forceCheck)
+            {
+                System.Diagnostics.Debug.WriteLine("🔄 Verificación ya en progreso, saltando...");
+                return _isOutdated;
+            }
+
+            // Cache de 5 minutos para evitar spam al servidor (excepto si es forzado)
+            if (!forceCheck && (DateTime.Now - _lastCheckTime).TotalMinutes < 5)
+            {
+                System.Diagnostics.Debug.WriteLine("⚡ Usando resultado cacheado de verificación");
+                return _isOutdated;
+            }
+
+            _isChecking = true;
+
             try
             {
                 Process.Start(new ProcessStartInfo
@@ -24,6 +40,10 @@ namespace GTAVInjector.Core
             catch (Exception ex)
             {
                 throw new Exception($"Failed to open Discord: {ex.Message}");
+            }
+            finally
+            {
+                _isChecking = false;
             }
         }
 

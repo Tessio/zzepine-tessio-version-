@@ -6,6 +6,8 @@ namespace GTAVInjector.Core
     {
         private static string _currentLanguage = "es";
         
+        public static string CurrentLanguage => _currentLanguage;
+        
         private static readonly Dictionary<string, Dictionary<string, string>> Translations = new()
         {
             ["en"] = new Dictionary<string, string>
@@ -19,6 +21,7 @@ namespace GTAVInjector.Core
                 ["GameType"] = "Game Type",
                 ["Launcher"] = "Launcher",
                 ["Requirements"] = "Requirements",
+                ["Devs"] = "Devs",
                 ["VersionStatus"] = "Version Status",
                 ["UpdateAvailable"] = "Update Available",
                 ["UpToDate"] = "Up to date",
@@ -39,7 +42,14 @@ namespace GTAVInjector.Core
                 ["GameKilled"] = "Game process terminated",
                 ["NoDllsEnabled"] = "No DLLs enabled for injection",
                 ["AutoInjecting"] = "Auto-injecting DLLs...",
-                ["UpdateConfirm"] = "Do you want to download and install the update?"
+                ["UpdateConfirm"] = "Do you want to download and install the update?",
+                ["ViewChangelog"] = "View Changelog",
+                ["CheckUpdates"] = "🔄 Check Updates",
+                ["VcRequirement"] = "• VC++ Redist x86 & x64",
+                ["GtaRequirement"] = "• GTA V installed",
+                ["AdminRequirement"] = "• Administrator rights",
+                ["Language"] = "Language",
+                ["GameKilled"] = "Game terminated"
             },
             ["es"] = new Dictionary<string, string>
             {
@@ -52,6 +62,7 @@ namespace GTAVInjector.Core
                 ["GameType"] = "Tipo de Juego",
                 ["Launcher"] = "Lanzador",
                 ["Requirements"] = "Requisitos",
+                ["Devs"] = "Desarrolladores",
                 ["VersionStatus"] = "Estado de Versión",
                 ["UpdateAvailable"] = "Actualización Disponible",
                 ["UpToDate"] = "Actualizado",
@@ -72,7 +83,14 @@ namespace GTAVInjector.Core
                 ["GameKilled"] = "Proceso del juego terminado",
                 ["NoDllsEnabled"] = "No hay DLLs habilitadas para inyectar",
                 ["AutoInjecting"] = "Auto-inyectando DLLs...",
-                ["UpdateConfirm"] = "¿Deseas descargar e instalar la actualización?"
+                ["UpdateConfirm"] = "¿Deseas descargar e instalar la actualización?",
+                ["ViewChangelog"] = "Ver Changelog",
+                ["CheckUpdates"] = "🔄 Verificar Actualizaciones",
+                ["VcRequirement"] = "• VC++ Redistribuible x86 y x64",
+                ["GtaRequirement"] = "• GTA V instalado",
+                ["AdminRequirement"] = "• Permisos de administrador",
+                ["Language"] = "Idioma",
+                ["GameKilled"] = "Juego terminado"
             }
         };
 

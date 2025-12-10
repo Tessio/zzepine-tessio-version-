@@ -1,3 +1,4 @@
+# ===== ARCHIVOS DE BUILD Y COMPILACIÓN =====
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -13,6 +14,28 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+
+# ===== CARPETAS DE PUBLICACIÓN =====
+publish/
+dist/
+
+# ===== ARCHIVOS INNECESARIOS PARA GITHUB =====
+# Archivos de imagen de prueba/documentación local
+imagen.png
+*.tmp
+*.temp
+
+# Scripts de compilación local (mejor usar dotnet commands)
+compilar.bat
+compilar.ps1
+
+# Archivos de documentación redundantes/locales
+RESUMEN.txt
+LEEME_PRIMERO.md
+INSTALACION.md
+CHECKLIST.md
+PROYECTO_COMPLETADO.md
+UI_PREVIEW.md
 
 <<<<<<< HEAD
 =======
